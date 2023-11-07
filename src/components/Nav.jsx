@@ -1,19 +1,21 @@
 import React from "react";
+import { Outlet, NavLink } from "react-router-dom";
 
 const Nav = () => {
   return (
-    <nav class="main-nav">
+    <nav className="main-nav">
       <ul>
         <li>
-          <a href="#">Cats</a>
+          <NavLink to="cats">Cats</NavLink>
         </li>
         <li>
-          <a href="#">Dogs</a>
+          <NavLink to="dogs">Dogs</NavLink>
         </li>
         <li>
-          <a href="#">Computers</a>
+          <NavLink to="computers">Computers</NavLink>
         </li>
       </ul>
+      <Outlet />
     </nav>
   );
 };
