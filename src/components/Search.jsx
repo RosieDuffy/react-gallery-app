@@ -1,7 +1,9 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { PropTypes } from "prop-types";
 
 const Search = ({ changeQuery }) => {
+  // reference to the users input in the search form
   const userInput = useRef();
   let navigate = useNavigate();
 
@@ -9,6 +11,7 @@ const Search = ({ changeQuery }) => {
     e.preventDefault();
     changeQuery(userInput.current.value);
 
+    //inserts users search into the url and redirects to results
     let path = `/search/${userInput.current.value}`;
     navigate(path);
   };
@@ -36,6 +39,10 @@ const Search = ({ changeQuery }) => {
       </button>
     </form>
   );
+};
+
+Search.propTypes = {
+  changeQuery: PropTypes.func,
 };
 
 export default Search;

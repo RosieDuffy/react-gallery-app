@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import Photo from "./Photo";
 import { useParams } from "react-router-dom";
+import { PropTypes } from "prop-types";
 
 const PhotoList = ({ data, subject, changeQuery }) => {
   let { query } = useParams();
 
+  // if subject is provided in props, use subject to retrieve data, if not use the query in params
   useEffect(() => {
     if (subject) {
       changeQuery(subject);
@@ -13,6 +15,7 @@ const PhotoList = ({ data, subject, changeQuery }) => {
     }
   });
 
+  // map over the data to return a Photo component for each result and store in photos array
   const photos = data.map((result) => (
     <Photo
       url={`https://live.staticflickr.com/${result.server}/${result.id}_${result.secret}_w.jpg`}
@@ -20,6 +23,9 @@ const PhotoList = ({ data, subject, changeQuery }) => {
       key={result.id}
     />
   ));
+
+  // if photos array is not empty, then map over array and return list items
+  // if not, return a no results message
   if (photos.length > 0) {
     return (
       <div className="photo-container">
@@ -41,6 +47,12 @@ const PhotoList = ({ data, subject, changeQuery }) => {
       </div>
     );
   }
+};
+
+PhotoList.propTypes = {
+  data: PropTypes.array.isRequired,
+  subject: PropTypes.string,
+  changeQuery: PropTypes.func,
 };
 
 export default PhotoList;

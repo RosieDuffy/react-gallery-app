@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import axios from "axios";
 
+// Main App components import section //
+
 import apiKey from "./config";
 import Nav from "./components/Nav";
 import Search from "./components/Search";
@@ -14,7 +16,9 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // set loading state while data is being fetched
     setLoading(true);
+    // activeFetch to track latest data fetch
     let activeFetch = true;
     axios
       .get(
@@ -23,6 +27,7 @@ function App() {
       .then((response) => {
         if (activeFetch) {
           setPics(response.data.photos.photo);
+          // set loading state to false as the data has now been fetched
           setLoading(false);
         }
       })
@@ -35,6 +40,7 @@ function App() {
     };
   }, [query]);
 
+  // handleQueryChange function to set the query parameter
   const handleQueryChange = (searchText) => {
     setQuery(searchText);
   };
@@ -43,6 +49,7 @@ function App() {
     <div className="container">
       <Search changeQuery={handleQueryChange} />
       <Nav />
+      {/* Display loading message while data is being fetched, then activate the routes */}
       {loading ? (
         <h3>Loading...</h3>
       ) : (

@@ -1,8 +1,6 @@
-# React + Vite
+Treehouse Project 7 - React Gallery App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Built using the Vite Build tool.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Axios is used to fetch data from the Flickr API and is used to display 24 image results to the user.
+The user can choose one of the three provided searches: Cats, Dogs or Computers. Or they can enter they own search.
