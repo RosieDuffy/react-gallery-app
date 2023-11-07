@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Photo from "./Photo";
 
 const PhotoList = ({ data, subject, changeQuery }) => {
@@ -9,7 +9,13 @@ const PhotoList = ({ data, subject, changeQuery }) => {
   });
 
   const photos = data.map((result) => (
-    <Photo id={result.id} secret={result.secret} server={result.server} />
+    <Photo
+      id={result.id}
+      secret={result.secret}
+      server={result.server}
+      title={result.title}
+      key={result.id}
+    />
   ));
 
   return (

@@ -1,5 +1,4 @@
-import React from "react";
-import { Outlet, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Nav = () => {
   return (
@@ -15,7 +14,6 @@ const Nav = () => {
           <NavLink to="computers">Computers</NavLink>
         </li>
       </ul>
-      <Outlet />
     </nav>
   );
 };
